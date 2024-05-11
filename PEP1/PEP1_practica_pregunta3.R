@@ -6,9 +6,9 @@
 # minutos.
 #================
 
-library("extraDistr")
-minutos = seq(0,10,by=1)
-distribucion = dunif(min, min = 0, max = 10)
+library("extraDistr") # Llamado a libreria extraDistr
+minutos = seq(0,10,by=1) # Se define la secuancia de minutos con rango de 1 min
+distribucion = dunif(minutos, min = 0, max = 10) # Aplica distribucion continua
 
 
 #================
@@ -18,7 +18,7 @@ distribucion = dunif(min, min = 0, max = 10)
 
 # GRAFICO FUNCION DE DENSIDAD
 
-library("ggplot2")
+library("ggplot2") # Llamado a libreria ggplot2
 #Extraído de https://dk81.github.io/dkmathstats_site/rmath-uniform-plots.html
 uniform_Plot = function(a, b){
   xvals <- data.frame(x = c(a, b)) #Range for x-values
@@ -35,21 +35,20 @@ uniform_Plot = function(a, b){
     geom_vline(xintercept = b, linetype = "dashed", colour = "red")
 }
 grafico=uniform_Plot(0,10)
-plot(grafico)
+plot(grafico) # Plotea el grafico
 
 
 # GRAFICO FUNCION DE MASA
 
-datos_masa=data.frame(min,distribucion,masa=1/10)
+datos_masa=data.frame(minutos,distribucion,masa=1/10) # Se define dataFrame para funcion de masa
 
-library("ggplot2")
-grafico=ggplot(data=datos_masa,aes(x=minutos,y=distribucion)) +
-  geom_bar(stat="identity",fill="lightblue3") +
-  theme_bw() +
-  ggtitle("Funcion de masa") +
-  xlab("minutos") +
-  ylab("Probabilidad")
-plot(grafico)
+grafico=ggplot(data=datos_masa,aes(x=minutos,y=distribucion)) + # Funcion de ggplot para crear grafico
+  geom_bar(stat="identity",fill="lightblue3") + # Grafico de barras
+  theme_bw() + # Tema
+  ggtitle("Funcion de masa") + # Titulo
+  xlab("minutos") + # Label eje x
+  ylab("Probabilidad") #Label eje y
+plot(grafico) # Ploteo grafico
 
 
 #================
@@ -58,13 +57,14 @@ plot(grafico)
 # matemático? (7 puntos).
 #================
 
+# Calculo de probabilidad acumulada con distribucion uniforme entre 4 y 10 min.
 pregunta_b = sum(dunif(4:10, min = 0, max = 10))
-cat("Pregunta_b: ", pregunta_b)
+cat("Pregunta_b: ", pregunta_b) # Impresion de respeusta
 
 #================
 # Pregunta:
 # c. Calcule la media y la desviación estándar de la variable estudiada (7 puntos).
 #================
 
-cat(" media =",(0+10)/2,"\n",
-    "desviacion estandar =",sqrt((10-0)^2/12),"\n")
+cat(" media =",(0+10)/2,"\n", # Calculo e impresion de media
+    "desviacion estandar =",sqrt((10-0)^2/12),"\n") # Calculo e impresion de desviacion estandar
