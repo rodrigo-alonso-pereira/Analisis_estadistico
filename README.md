@@ -3,11 +3,11 @@ Repositorio de avances de la asignatura de Analisis Estadistico para Ingenieria,
 
 ## Comenzando 🚀
 
-Utilizar git para poder clonar el repositorio, o de plano descargarlo
+Utilizar git para poder clonar el repositorio, o de plano descargarlo.
 
 ### Pre-requisitos 📋
 
-_Instalar previamente el IDE R_
+_Instalar previamente el IDE R._
 
 ## Contexto 💻
 Repositorio que contiene todo los codigos en R referentes a las 4 unidades vistas en la asignatura de Analisis Estadistico. 
