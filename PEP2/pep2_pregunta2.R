@@ -44,9 +44,24 @@ print(confianza)
 grafico=ggplot(datos,aes(Gasto_salud_dolares ,expectativa_anual,,label=Pais)) +
   geom_point(aes(Gasto_salud_dolares,expectativa_anual),datos,color="darkblue",alpha=0.4) +
   theme_bw() + xlab("Gasto percápita en salud ($US)") + ylab("Expectativa de vida en años") +
-  ggtitle("Expectativa de vida y Gasto percápita en salud") +
+  ggtitle("Regresion Lineal: Expectativa de vida y Gasto percápita en salud") +
   geom_smooth(method = "lm", formula = y ~ x, level=0.95, color="red", size=0.5) +
   theme(plot.title = element_text(hjust = 0.5)) + geom_text(hjust=0.1, vjust=0.1, size=3)
 
 plot(grafico)
 
+
+# Ajustar el modelo de regresión logarítmica
+modelo = lm(expectativa_anual ~ log(Gasto_salud_dolares), data = datos)
+
+# Resumen del modelo
+summary(modelo)
+
+grafico=ggplot(datos,aes(Gasto_salud_dolares ,expectativa_anual,,label=Pais)) +
+  geom_point(aes(Gasto_salud_dolares,expectativa_anual),datos,color="darkblue",alpha=0.4) +
+  theme_bw() + xlab("Gasto percápita en salud ($US)") + ylab("Expectativa de vida en años") +
+  ggtitle("Regresión Logarítmica: Expectativa de vida y Gasto percápita en salud") +
+  geom_smooth(method = "lm", formula =  y ~ log(x), level=0.95, color="red", size=0.5) +
+  theme(plot.title = element_text(hjust = 0.5)) + geom_text(hjust=0.1, vjust=0.1, size=3)
+
+plot(grafico)

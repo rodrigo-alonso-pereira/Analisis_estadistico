@@ -23,11 +23,11 @@
   alg_2 = c(2.2, 2.7, 2.6, 2.5, 2.3, 2.0, 2.5, 2.2, 2.1, 2.7, 
             2.6, 2.1, 2.5, 2.0, 2.3, 2.2, 2.2, 2.1, 2.6, 2.4, 
             2.0, 2.6, 2.8, 2.5)
-  datos = data.frame(alg_1, alg_2)
+  df = data.frame(alg_1, alg_2)
   
   boxplot(alg_1,alg_2,names=c("algoritmo 1","algoritmo 2"))
   
-  valores = describe(datos, IQR=T, quant=c(.25,.50,.75))
+  valores = describe(df, IQR=T, quant=c(.25,.50,.75))
   print(valores)
   
   medias = valores$mean
@@ -73,7 +73,8 @@
   # d) Dentro de los dos grupos presentados, determine mediante algún test si los datos presentan o no
   #   homocedasticidad y explique los resultados y conclusiones obtenidas. (5 puntos)
   #================
+  library(car)
   
-  var.test(alg_1, alg_2)
-  
+  datos_test = data.frame(grupos=c(rep("alg_1", 24), rep("alg_2", 24)), valores=c(alg_1, alg_2))
+  leveneTest(valores ~ grupos, data=datos_test)
   
