@@ -23,11 +23,11 @@
   alg_2 = c(2.2, 2.7, 2.6, 2.5, 2.3, 2.0, 2.5, 2.2, 2.1, 2.7, 
             2.6, 2.1, 2.5, 2.0, 2.3, 2.2, 2.2, 2.1, 2.6, 2.4, 
             2.0, 2.6, 2.8, 2.5)
-  df = data.frame(alg_1, alg_2)
+  datos = data.frame(alg_1, alg_2)
   
   boxplot(alg_1,alg_2,names=c("algoritmo 1","algoritmo 2"))
   
-  valores = describe(df, IQR=T, quant=c(.25,.50,.75))
+  valores = describe(datos, IQR=T, quant=c(.25,.50,.75))
   print(valores)
   
   medias = valores$mean
